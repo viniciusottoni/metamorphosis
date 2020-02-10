@@ -8,11 +8,12 @@ class TestDefinitionTest {
 }
 
 test('must have test for class TestDefinitionTest', () => {
-    const test = Tests.FindTest('TestDefinitionTest');
+    const test = Tests.findTest('TestDefinitionTest');
     
     expect(test).not.toBe(null);
     expect(test.className).toBe('TestDefinitionTest');
     expect(test.testType).toBe(TestType.Class);
     expect(test.description).toBe('TestDefinition test');
     expect(test.startup).toBe(null);
+    expect(test.units).toEqual([]);
 });

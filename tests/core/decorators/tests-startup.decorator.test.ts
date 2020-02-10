@@ -13,11 +13,12 @@ class TestsStartupTest {
 }
 
 test('must have test for class TestsStartupTest', () => {
-    const test = Tests.FindTest('TestsStartupTest');
+    const test = Tests.findTest('TestsStartupTest');
     
     expect(test).not.toBe(null);
     expect(test.className).toBe('TestsStartupTest');
     expect(test.testType).toBe(TestType.Class);
     expect(test.description).toBe('TestStartup test');
     expect(test.startup).toBe(new TestsStartupTest().startup);
+    expect(test.units).toEqual([]);
 });
