@@ -1,19 +1,19 @@
 import { TestType } from '../../../src/core/enums/test-type.enum';
 import { TestsDefinition } from '../../../src/core/decorators/tests-definition.decorator';
 import { TestsStartup } from '../../../src/core/decorators/tests-startup.decorator';
-import { Tests } from '../../../src/core/tests';
+import { Core } from '../../../src/core/core';
 
 @TestsDefinition(TestType.Class, "TestStartup test")
 class TestsStartupTest {
 
     @TestsStartup()
     public startup() {
-        
+        console.log('call startup');
     }
 }
 
 test('must have test for class TestsStartupTest', () => {
-    const test = Tests.findTest('TestsStartupTest');
+    const test = Core.current();
     
     expect(test).not.toBe(null);
     expect(test.className).toBe('TestsStartupTest');

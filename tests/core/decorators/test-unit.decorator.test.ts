@@ -2,29 +2,29 @@ import { TestsDefinition } from '../../../src/core/decorators/tests-definition.d
 import { TestType } from '../../../src/core/enums/test-type.enum';
 import { TestsStartup } from '../../../src/core/decorators/tests-startup.decorator';
 import { TestUnit } from '../../../src/core/decorators/test-unit.decorator';
-import { Tests } from '../../../src/core/tests';
+import { Core } from '../../../src/core/core';
 
 @TestsDefinition(TestType.Class, "TestUnits test")
 class TestUnitsTest {
 
     @TestsStartup()
     public startup() {
-        
+        console.log('call startup');
     }
 
     @TestUnit(TestType.Method, "TestOne unit test")
     public TestOne(){
-
+        console.log('call TestOne method');
     }
 
     @TestUnit(TestType.Method, "TestTwo unit test")
     public TestTwo(){
-
+        console.log('call TestTwo method');
     }
 }
 
 test('must have test for class TestUnitsTest', () => {
-    const test = Tests.findTest('TestUnitsTest');
+    const test = Core.current();
     
     expect(test).not.toBe(null);
     expect(test.className).toBe('TestUnitsTest');

@@ -1,8 +1,8 @@
-import { Tests } from '../tests';
+import { Core } from '../core';
 
 export function TestData(...args: any[]) {
     return function(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
         const method = descriptor.value;
-        Tests.setMethodToUnit(target.constructor['name'], propertyKey, method, args);
+        Core.setMethodToUnit(target.constructor['name'], propertyKey, method, args);
     }
 }

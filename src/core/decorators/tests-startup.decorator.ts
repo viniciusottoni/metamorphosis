@@ -1,8 +1,8 @@
-import { Tests } from '../tests'
+import { Core } from '../core'
 
 export function TestsStartup() {
     return function(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
         const method = descriptor.value;
-        Tests.setStartup(target.constructor['name'], method);
+        Core.setStartup(target.constructor['name'], method);
     }
 } 
